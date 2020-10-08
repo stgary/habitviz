@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  db.get()
+  db.find()
     .then(dbRes => {
       res.status(200).json(dbRes);
     })
@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  db.remove(id)
+  db.destroy(id)
     .then(dbRes => res.status(200))
     .catch(error => {
       res.status(500).json(error.message);
